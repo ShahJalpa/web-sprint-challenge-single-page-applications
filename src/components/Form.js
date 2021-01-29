@@ -38,7 +38,7 @@ const OrderForm = (props) =>{
             <div className="header">
                 <h2> Build Your Own Pizza</h2>
                 <div className="inputName">
-                    <label>Name: </label>
+                    <label>Name:  </label>
                     <input 
                         name="name"
                         type="text"

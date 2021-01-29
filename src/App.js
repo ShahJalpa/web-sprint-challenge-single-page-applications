@@ -66,7 +66,7 @@ const App = () => {
 
       toppings: ["pepperoni", "grilledChicken", "onion", "greenPepper", "blackOlives", "pineapple", "extraCheeze", "roastedGarlic"].filter(
         (topping) => orderFormVales[topping]
-      )
+      ),
       // pepperoni: orderFormVales.pepperoni,
       // grilledChicken: orderFormVales.grilledChicken,
       // onion: orderFormVales.onion,
