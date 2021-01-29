@@ -57,7 +57,7 @@ const App = () => {
   const [buttonDissabled, setButtonDisabled] = useState(initialButtonDisabled);
   const history = useHistory();
 
-  //STEP 9 WHEN USER HIT THE SUBMIT BUTTON //STEP 10 IN FORM.JS
+   //STEP 9 WHEN USER HIT THE SUBMIT BUTTON //STEP 10 IN FORM.JS
   const submitForm = () => {
     //updating the new order
     const newOrder = {
@@ -103,6 +103,28 @@ const App = () => {
     })
   }
 
+   //STEP 13
+   const inputChange = (name, value) => {
+     yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...fromErrors, [name]: "",
+        })
+      })
+      .catch((error) => {
+        setFormErrors({
+          ...fromErrors,[name]: error.errors[0],
+        })
+      });
+
+      setOrderFormValues({
+        ...orderFormVales, [name]:value
+      })
+
+   }
+
   //<---STEP 4 SWITCH AND ROUTES ADDED HERE---> //STEP 5 IN THE FORM>JS
   return (
     <div>
@@ -113,6 +135,7 @@ const App = () => {
         <Route exact path='/pizza'>
           <OrderForm
             values = {orderFormVales}
+            change = {inputChange}
             errors = {fromErrors}
           />
         </Route>

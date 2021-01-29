@@ -1,4 +1,4 @@
-//STEP 12
+//STEP 12 //STEP 13 IS IN APP.JS
 import * as yup from 'yup';
 
 const formSchema = yup.object().shape({
@@ -30,7 +30,7 @@ const formSchema = yup.object().shape({
            .boolean(), 
     roastedGarlic: yup
            .boolean(), 
-    gluterFree: yup
+    glutenFree: yup
            .boolean(), 
     instructions: yup
            .string()
