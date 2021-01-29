@@ -56,7 +56,7 @@ const App = () => {
   const [finalOrder, setFinalOrder] = useState(initialFinalOrder);
   const [buttonDissabled, setButtonDisabled] = useState(initialButtonDisabled);
 
-  //STEP 9 WHEN USER HIT THE SUBMIT BUTTON
+  //STEP 9 WHEN USER HIT THE SUBMIT BUTTON //STEP 10 IN FORM.JS
   const submitForm = () => {
     //updating the new order
     const newOrder = {
@@ -98,7 +98,6 @@ const App = () => {
         <Route exact path='/pizza'>
           <OrderForm
             values = {orderFormVales}
-
           />
         </Route>
       </Switch>
