@@ -45,7 +45,7 @@ const initialFormErrors ={
 
 //STEP 7 SET THE INITIAL FINAL ORDER AS AN EMPTY ARRAY AND SUBMIT BUTTON DISABLE TRUE
 const initialFinalOrder = [];
-const initialButtonDisabled = true;
+const initialDisabled = true;
 
 //import App 
 const App = () => {
@@ -54,7 +54,7 @@ const App = () => {
   const [orderFormVales, setOrderFormValues] = useState(initialOrderFormValues);
   const [fromErrors, setFormErrors] = useState(initialFormErrors);
   const [finalOrder, setFinalOrder] = useState(initialFinalOrder);
-  const [buttonDissabled, setButtonDisabled] = useState(initialButtonDisabled);
+  const [disabled, setButtonDisabled] = useState(initialDisabled);
   const history = useHistory();
 
    //STEP 9 WHEN USER HIT THE SUBMIT BUTTON //STEP 10 IN FORM.JS
@@ -103,7 +103,7 @@ const App = () => {
     })
   }
 
-   //STEP 13
+   //STEP 13 form validation
    const inputChange = (name, value) => {
      yup
       .reach(schema, name)
@@ -125,6 +125,15 @@ const App = () => {
 
    }
 
+   //STEP 14 SUBMIT BUTTON DISABLED FUNCTIONALITY
+   useEffect(() => {
+     schema
+      .isValid(orderFormVales)
+      .then((valid) => {
+        setButtonDisabled(!valid)
+      }, [orderFormVales])
+   })
+
   //<---STEP 4 SWITCH AND ROUTES ADDED HERE---> //STEP 5 IN THE FORM>JS
   return (
     <div>
@@ -136,12 +145,14 @@ const App = () => {
           <OrderForm
             values = {orderFormVales}
             change = {inputChange}
+            subbmit = {submitForm}
+            disabled = {disabled}
             errors = {fromErrors}
           />
         </Route>
       </Switch>
       <Route path='/orderConfirmation'>
-        <Confirmation />
+        <Confirmation order = {finalOrder}/>
       </Route>
     </div>
   

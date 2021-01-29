@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 const OrderForm = (props) =>{
     //<---STEP 5  ADD PRPS AND EVENT LISTENER--->STEP 4 IN A APP.JS
-    const {values, submit, change, buttonDissabled, errors} = props;
+    const {values, submit, change, disabled, errors} = props;
 
     //prevent page to reload from the browser.
     const onSubmit = (event) => {
@@ -20,15 +20,16 @@ const OrderForm = (props) =>{
 
     return (
         //<---STEP 3 LINK TO HOME PAGE--->
-        <div>
+        <div >
             <div className='home'>
                 <Link to={'/'}> 
                     Lambda Eats
                 </Link>
             </div>
+
         {/* <---STEP 10 CREATE A FORM---> */}
             {/* //Show Errors */}
-            <div className="errors">
+            <div className="errors" onSubmit={onSubmit}>
                 <div>{errors.name}</div>
                 <div>{errors.size}</div>
                 <div>{errors.sauce}</div>
@@ -200,7 +201,7 @@ const OrderForm = (props) =>{
                 </div>
                 {/* //SUBMIT BUTTON */}
                 <div className="submitButton">
-                    <button disabled={buttonDissabled}>Submit Your Order!</button>
+                    <button disabled={disabled}>Submit Your Order!</button>
                 </div>
             </div>
         </div>
