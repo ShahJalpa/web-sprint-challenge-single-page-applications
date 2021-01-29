@@ -60,33 +60,43 @@ const App = () => {
   const submitForm = () => {
     //updating the new order
     const newOrder = {
-      name: orderFormVales.name,
+      name: orderFormVales.name.trim(),
       size: orderFormVales.size,
       sauce: orderFormVales.sauce,
 
-      pepperoni: orderFormVales.pepperoni,
-      grilledChicken: orderFormVales.grilledChicken,
-      onion: orderFormVales.onion,
-      greenPepper: orderFormVales.greenPepper,
+      toppings: ["pepperoni", "grilledChicken", "onion", "greenPepper", "blackOlives", "pineapple", "extraCheeze", "roastedGarlic"].filter(
+        (topping) => orderFormVales[topping]
+      )
+      // pepperoni: orderFormVales.pepperoni,
+      // grilledChicken: orderFormVales.grilledChicken,
+      // onion: orderFormVales.onion,
+      // greenPepper: orderFormVales.greenPepper,
 
-      blackOlives: orderFormVales.blackOlives,
-      pineapple: orderFormVales.pineapple,
-      extraCheeze: orderFormVales.extraCheeze,
-      roastedGarlic: orderFormVales.roastedGarlic,
+      // blackOlives: orderFormVales.blackOlives,
+      // pineapple: orderFormVales.pineapple,
+      // extraCheeze: orderFormVales.extraCheeze,
+      // roastedGarlic: orderFormVales.roastedGarlic,
 
-      glutenFree: orderFormVales.glutenFree,
+      // glutenFree: orderFormVales.glutenFree,
 
-      instructions: orderFormVales.instructions
+      instructions: orderFormVales.instructions.trim()
     }
     //post the new order into data (storing data)
-    //postNewOrder(newOrder)
+    postNewOrder(newOrder)
   }
 
-  //STEP 10 POST NEW ORDER IN TO DATA STORAGE
-  // const postNewOrder = (newOrder) => {
-  //   axios
-  //   .post()
-  // }
+  //STEP 11 POST NEW ORDER IN TO DATA STORAGE
+  const postNewOrder = (newOrder) => {
+    axios
+    .post('https://reqres.in/api/users', newOrder)
+    .then((response) => {
+      setFinalOrder(response.data)
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log('Oh O! you are misiing somthing in order form', error)
+    })
+  }
 
   //<---STEP 4 SWITCH AND ROUTES ADDED HERE---> //STEP 5 IN THE FORM>JS
   return (
