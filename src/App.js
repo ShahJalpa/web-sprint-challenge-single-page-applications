@@ -98,6 +98,7 @@ const App = () => {
         <Route exact path='/pizza'>
           <OrderForm
             values = {orderFormVales}
+            errors = {fromErrors}
           />
         </Route>
       </Switch>

@@ -27,6 +27,14 @@ const OrderForm = (props) =>{
                 </Link>
             </div>
         {/* <---STEP 10 CREATE A FORM---> */}
+            {/* //Show Errors */}
+            <div className="errors">
+                <div>{errors.name}</div>
+                <div>{errors.size}</div>
+                <div>{errors.sauce}</div>
+            </div>
+
+            {/* //Form */}
             <div className="header">
                 <h2> Build Your Own Pizza</h2>
                 <div className="inputName">
@@ -190,6 +198,7 @@ const OrderForm = (props) =>{
                             onChange={onChange}
                         />
                 </div>
+                {/* //SUBMIT BUTTON */}
                 <div className="submitButton">
                     <button disabled={buttonDissabled}>Submit Your Order!</button>
                 </div>
