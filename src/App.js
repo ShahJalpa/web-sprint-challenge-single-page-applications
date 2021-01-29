@@ -55,6 +55,7 @@ const App = () => {
   const [fromErrors, setFormErrors] = useState(initialFormErrors);
   const [finalOrder, setFinalOrder] = useState(initialFinalOrder);
   const [buttonDissabled, setButtonDisabled] = useState(initialButtonDisabled);
+  const history = useHistory();
 
   //STEP 9 WHEN USER HIT THE SUBMIT BUTTON //STEP 10 IN FORM.JS
   const submitForm = () => {
@@ -85,7 +86,7 @@ const App = () => {
     postNewOrder(newOrder)
   }
 
-  //STEP 11 POST NEW ORDER IN TO DATA STORAGE
+  //STEP 11 POST NEW ORDER IN TO DATA STORAGE //STEP 12 in in formSchema.js
   const postNewOrder = (newOrder) => {
     axios
     .post('https://reqres.in/api/users', newOrder)
@@ -95,6 +96,10 @@ const App = () => {
     })
     .catch((error) => {
       console.log('Oh O! you are misiing somthing in order form', error)
+    })
+    .finally(() => {
+      setOrderFormValues(initialOrderFormValues) //this will make the form clear after the order has been sent
+      history.push('/confirmation')
     })
   }
 

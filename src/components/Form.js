@@ -57,7 +57,7 @@ const OrderForm = (props) =>{
                     </select> 
                 </div>
                 {/* //RADIO BUTTONS */}
-                <div className="Sauce">
+                <div className="sauce">
                     <h3>Choose your favorite sauce</h3>
                     <div className="inputSauce">
                         <label> Original Red
