@@ -22,6 +22,10 @@ describe("PizzaOrderForm app", () => {
         cy.get('input[name="onion"]')
         .check()
         .should('be.checked')
+
+        cy.get('input[name="roastedGarlic"]')
+          .check()
+          .should('be.checked')
     })
     it('let select gluten free', () => {
         cy.get('input[name="glutenFree"]')
